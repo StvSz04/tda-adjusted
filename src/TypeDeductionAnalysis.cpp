@@ -133,15 +133,15 @@ TypeDeductionAnalysis::Result TypeDeductionAnalysis::run(Module& m, ModuleAnalys
 
   LLVM_DEBUG(log().logln("[End of TypeDeductionAnalysis]", Logger::Magenta));
 
-
-  float recoveryRate = (float)stat3transparentAliases / (float)stat1ptrAliases * 100.0f;
-  Logger& logger = log();
-  logger.logln("--- Research Statistics ---", Logger::Cyan);
-  logger.log("Total Pointer Types: ").logln(std::to_string(stat0ptrTypes));
-  logger.log("Transparent Aliases: ").logln(std::to_string(stat3transparentAliases), Logger::Green);
-  logger.log("Opaque Aliases:      ").logln(std::to_string(stat5opaqueAliases), Logger::Red);
-  logger.log("Recovery Rate:       ").logln(std::to_string(recoveryRate) + "%", Logger::Bold);
-
+  if (stat0ptrTypes > 0) {
+      float recoveryRate = (float)stat3transparentAliases / (float)stat1ptrAliases * 100.0f;
+      Logger& logger = log();
+      logger.logln("--- Research Statistics ---", Logger::Cyan);
+      logger.log("Total Pointer Types: ").logln(std::to_string(stat0ptrTypes));
+      logger.log("Transparent Aliases: ").logln(std::to_string(stat3transparentAliases), Logger::Green);
+      logger.log("Opaque Aliases:      ").logln(std::to_string(stat5opaqueAliases), Logger::Red);
+      logger.log("Recovery Rate:       ").logln(std::to_string(recoveryRate) + "%", Logger::Bold);
+  }
 
   
 
