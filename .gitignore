@@ -1,0 +1,8 @@
+test/**/temp
+/venv
+/llvm_files
+llvm.sh
+llvm.sh.1
+tda_result.json
+output.txt
+/test
